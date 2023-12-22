@@ -1,0 +1,22 @@
+{
+  "version": 2,
+  "dgSpecHash": "Ks8tmG3d7Gv9X+Zrk57BEC+ip53q9vQ0V33KL6QKaBfPy4hD4VaFk+y+QVMUj2TSEWFDPwQ6aOWvtTG8PQ8I4g==",
+  "success": true,
+  "projectFilePath": "/home/david/dev/homecloud/homecloud.csproj",
+  "expectedPackageFiles": [
+    "/home/david/.nuget/packages/microsoft.entityframeworkcore/8.0.0/microsoft.entityframeworkcore.8.0.0.nupkg.sha512",
+    "/home/david/.nuget/packages/microsoft.entityframeworkcore.abstractions/8.0.0/microsoft.entityframeworkcore.abstractions.8.0.0.nupkg.sha512",
+    "/home/david/.nuget/packages/microsoft.entityframeworkcore.analyzers/8.0.0/microsoft.entityframeworkcore.analyzers.8.0.0.nupkg.sha512",
+    "/home/david/.nuget/packages/microsoft.extensions.caching.abstractions/8.0.0/microsoft.extensions.caching.abstractions.8.0.0.nupkg.sha512",
+    "/home/david/.nuget/packages/microsoft.extensions.caching.memory/8.0.0/microsoft.extensions.caching.memory.8.0.0.nupkg.sha512",
+    "/home/david/.nuget/packages/microsoft.extensions.dependencyinjection/8.0.0/microsoft.extensions.dependencyinjection.8.0.0.nupkg.sha512",
+    "/home/david/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/8.0.0/microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512",
+    "/home/david/.nuget/packages/microsoft.extensions.logging/8.0.0/microsoft.extensions.logging.8.0.0.nupkg.sha512",
+    "/home/david/.nuget/packages/microsoft.extensions.logging.abstractions/8.0.0/microsoft.extensions.logging.abstractions.8.0.0.nupkg.sha512",
+    "/home/david/.nuget/packages/microsoft.extensions.options/8.0.0/microsoft.extensions.options.8.0.0.nupkg.sha512",
+    "/home/david/.nuget/packages/microsoft.extensions.primitives/8.0.0/microsoft.extensions.primitives.8.0.0.nupkg.sha512",
+    "/home/david/.nuget/packages/mysqlconnector/2.3.3/mysqlconnector.2.3.3.nupkg.sha512",
+    "/home/david/.nuget/packages/mysqlconnector.dependencyinjection/2.3.1/mysqlconnector.dependencyinjection.2.3.1.nupkg.sha512"
+  ],
+  "logs": []
+}

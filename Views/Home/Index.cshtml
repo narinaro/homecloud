@@ -1,0 +1,30 @@
+﻿@using homecloud.Models;
+
+@{
+    List<string> files = ViewData["folderFiles"] as List<string>;
+    List<string> directories = ViewData["folderDirectories"] as List<string>;
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en" >
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+
+    </head>
+    <body>
+        <html lang="en"> 
+            <head> 
+                <meta charset="UTF-8"> 
+                <title></title> 
+                @foreach (string directory in directories) {
+                    <h2>@directory</h2>
+                }
+                @foreach (string file in files) {
+                    <h2>@file</h2>
+                }
+            </head> 
+        </html>
+    </body>
+</html>
+
