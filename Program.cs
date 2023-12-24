@@ -1,10 +1,16 @@
+using MySqlConnector;
+
 var builder = WebApplication.CreateBuilder(args);
+
+// MySql
+builder.Services.AddMySqlDataSource(builder.Configuration.GetConnectionString("Default"));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-
 var app = builder.Build();
+
+app.MapControllers();
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

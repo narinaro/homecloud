@@ -1,10 +1,23 @@
 using Microsoft.AspNetCore.Mvc;
+using MySqlConnector;
 namespace homecloud.Controllers;
 
 public class LoginController : Controller
 {
-    public IActionResult Index()
+    private MySqlConnection _connection;
+
+    public LoginController(MySqlConnection connection)
     {
+        _connection = connection;
+    }
+
+    public async Task<IActionResult> Index()
+    {
+        await _connection.OpenAsync();
+        await using var command = new MySqlCommand("insert into homecloud.Users (idUsers, username, email, password) values (38, 'lkjf', 'ldaöjfk', 'dklaöf')", _connection);
+        await command.ExecuteScalarAsync();
+        return await Task.Run(() => View());
+
         if (HttpContext.Request.Method == "POST") {
 
             LoginCreds user = new LoginCreds();
@@ -12,9 +25,8 @@ public class LoginController : Controller
             user.email = Request.Form["email"];
             user.password = Request.Form["password"];
 
-            return RedirectToAction("Index", "Login", new { area = "" });
+            RedirectToAction("Index", "Login", new { area = "" });
         }
 
-        return View();
     }
 }
