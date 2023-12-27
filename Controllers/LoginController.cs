@@ -6,10 +6,12 @@ public class LoginController : Controller {
     private MySqlConnection _connection;
 
     public LoginController(MySqlConnection connection) {
+
         _connection = connection;
     }
 
     public IActionResult Index() {
+
         if (Request.Method == "POST") {
             string? email = Request.Form["email"];
             string? password = Request.Form["password"];
@@ -19,6 +21,10 @@ public class LoginController : Controller {
 
             return RedirectToAction("Index", "Login", new { area = "" });
         }
+
+        if (Request.Cookies["LoggedIn"] == "1")
+                return RedirectToAction("Index", "Home", new { area = "" });
+
         return View();
     }
     
@@ -36,7 +42,5 @@ public class LoginController : Controller {
             rdr.Close();
             return false;
         }
-
-
     }
 }

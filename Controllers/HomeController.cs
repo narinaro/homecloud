@@ -3,12 +3,19 @@ namespace homecloud.Controllers;
 
 public class HomeController : Controller
 {
+    private readonly IHttpContextAccessor _httpContextAccessor;
+
+    public HomeController(IHttpContextAccessor httpContextAccessor) {
+
+        _httpContextAccessor = httpContextAccessor;
+    }
     public IActionResult Index()
     {
-        if (HttpContext.Request.Method == "POST") {
-            //return RedirectToAction("Index", "Login", new { area = "" });
-            Console.WriteLine(Request.Form["test"]);
-        }
+        var LoggedIn = new CookieOptions();
+        LoggedIn.Expires = DateTime.Now.AddDays(1);
+        LoggedIn.IsEssential = true;
+
+        _httpContextAccessor.HttpContext.Response.Cookies.Append("LoggedIn", "1", LoggedIn);
 
         
         string cloudStorage = @"/home/david/cloudStorage";
@@ -30,9 +37,4 @@ public class HomeController : Controller
 
         return View();
     }
-
-    public IActionResult Test() {
-        Response.Redirect("/Sucesso");
-        return View();
-    } 
 }

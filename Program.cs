@@ -8,6 +8,10 @@ builder.Services.AddMySqlDataSource(builder.Configuration.GetConnectionString("D
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+// Cookies
+builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
+
 var app = builder.Build();
 
 app.MapControllers();
