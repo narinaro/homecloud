@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("homecloud")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1b03d6c20d2b4e31ff847940ac29f47bec695899")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
 [assembly: System.Reflection.AssemblyProductAttribute("homecloud")]
 [assembly: System.Reflection.AssemblyTitleAttribute("homecloud")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

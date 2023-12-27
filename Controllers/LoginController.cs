@@ -14,8 +14,6 @@ public class LoginController : Controller {
             string? email = Request.Form["email"];
             string? password = Request.Form["password"];
 
-            if (email == "" || password == "")
-                return RedirectToAction("Index", "Login", new { area = "" });
             if (checkCreds())
                 return RedirectToAction("Index", "Home", new { area = "" });
 
