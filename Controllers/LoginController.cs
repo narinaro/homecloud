@@ -9,33 +9,34 @@ public class LoginController : Controller {
         _connection = connection;
     }
 
-    public async Task<IActionResult> Index() {
+    public IActionResult Index() {
+        if (Request.Method == "POST") {
+            string? email = Request.Form["email"];
+            string? password = Request.Form["password"];
 
-        if (HttpContext.Request.Method == "POST") {
-            var result = AsyncContext.Run(checkCreds);
+            if (email == "" || password == "")
+                return RedirectToAction("Index", "Login", new { area = "" });
+            if (checkCreds())
+                return RedirectToAction("Index", "Home", new { area = "" });
 
-            
-
-            return await Task.Run(() => RedirectToAction("Index", "Login", new { area = "" }));
+            return RedirectToAction("Index", "Login", new { area = "" });
         }
-
-        return  await Task.Run(() => View());
-
+        return View();
     }
     
-    public async Task<bool> checkCreds() {
-        await _connection.OpenAsync();
-        await using var command = new MySqlCommand("select idUsers from homecloud.Users where username = '{Request.Form['user']}' and email = '{Request.Form['email']}' and password = '{Request.Form['password']}'", _connection);
+    public bool checkCreds() {
+        _connection.Open();
+        var command = new MySqlCommand($"select idUsers from homecloud.Users where email = '{Request.Form["email"]}' and password = '{Request.Form["password"]}'", _connection);
 
         MySqlDataReader rdr = command.ExecuteReader();
 
         if(rdr.Read()) {
             Console.WriteLine(rdr[0]);
             rdr.Close();
-            return await Task.Run(() => true);
+            return true;
         } else {
             rdr.Close();
-            return await Task.Run(() => false);
+            return false;
         }
 
 
