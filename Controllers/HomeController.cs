@@ -31,6 +31,7 @@ public class HomeController : Controller
             files[i] = files[i].Remove(0, files[i].LastIndexOf("/") + 1);
         ViewData["folderDirectories"] = directories;
         ViewData["folderFiles"] = files;
+        ViewData["email"] = _email;
 
         return View();
     }

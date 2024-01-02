@@ -3,6 +3,7 @@
 @{
     List<string>? files = ViewData["folderFiles"] as List<string>;
     List<string>? directories = ViewData["folderDirectories"] as List<string>;
+    string email = ViewData["email"] as string;
     Layout = null;
 }
 <!DOCTYPE html>
@@ -10,19 +11,27 @@
     <head>
         <meta charset="UTF-8">
         <title></title>
-
     </head>
     <body>
         <html lang="en"> 
             <head> 
                 <meta charset="UTF-8"> 
-                <title></title> 
+                <h1>HomeCloud - @email</h1> 
+                <table border="1">
+                    <tr>
+                        <th>Name</th>
+                    </tr>
                 @foreach (string directory in directories) {
-                    <h2>@directory</h2>
+                    <tr>
+                        <td>@directory</td>
+                    </tr>
                 }
                 @foreach (string file in files) {
-                    <h2>@file</h2>
+                    <tr>
+                        <td>@file</td>
+                    </tr>
                 }
+                </table>
             </head> 
         </html>
     </body>
