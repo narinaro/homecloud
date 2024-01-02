@@ -7,3 +7,5 @@ ToDo:
     - Upload
     - Delete
 - Password as Hash
+- Safe Queries
+- Users as Model

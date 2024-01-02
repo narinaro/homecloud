@@ -1,8 +1,8 @@
 ﻿@using homecloud.Models;
 
 @{
-    List<string> files = ViewData["folderFiles"] as List<string>;
-    List<string> directories = ViewData["folderDirectories"] as List<string>;
+    List<string>? files = ViewData["folderFiles"] as List<string>;
+    List<string>? directories = ViewData["folderDirectories"] as List<string>;
     Layout = null;
 }
 <!DOCTYPE html>

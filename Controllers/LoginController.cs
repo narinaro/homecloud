@@ -1,11 +1,12 @@
 using Microsoft.AspNetCore.Mvc;
 using MySqlConnector;
-using System.Net.Http.Headers;
 namespace homecloud.Controllers;
 
 public class LoginController : Controller {
     private MySqlConnection _connection;
     private IHttpContextAccessor _httpContextAccessor;
+    private string? _email;
+    private string? _password;
 
     public LoginController(MySqlConnection connection, IHttpContextAccessor httpContextAccessor) {
         _httpContextAccessor = httpContextAccessor;
@@ -14,8 +15,17 @@ public class LoginController : Controller {
 
     public IActionResult Index() {
         if (Request.Method == "POST") {
+            _email = Request.Form["email"];
+            _password = Request.Form["password"];
+
+            // email or password not filled -> login page
+            if (_email == "" || _password == "")
+                return RedirectToAction("Index", "Login", new { area = "" });
+
+            // check if email password combination exists in db ? login : home
             if (checkCreds())
                 return RedirectToAction("Index", "Home", new { area = "" });
+
             return RedirectToAction("Index", "Login", new { area = "" });
         }
 
@@ -26,7 +36,7 @@ public class LoginController : Controller {
     
     public bool checkCreds() {
         _connection.Open();
-        var command = new MySqlCommand($"select idUsers from homecloud.Users where email = '{Request.Form["email"]}' and password = '{Request.Form["password"]}'", _connection);
+        var command = new MySqlCommand($"select idUsers from homecloud.Users where email = '{_email}' and password = '{_password}'", _connection);
 
         MySqlDataReader rdr = command.ExecuteReader();
 
@@ -43,8 +53,8 @@ public class LoginController : Controller {
 
     public void SetSession() {
         if (string.IsNullOrEmpty(HttpContext.Session.GetString("email"))) {
-            HttpContext.Session.SetString("email", Request.Form["email"]);
-            HttpContext.Session.SetString("password", Request.Form["password"]);
+            HttpContext.Session.SetString("email", _email);
+            HttpContext.Session.SetString("password", _password);
             HttpContext.Session.SetString("LoggedIn", "1");
         }
     }
